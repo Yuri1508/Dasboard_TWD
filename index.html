@@ -1,51 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-<div id="affiche">
-</div>
-<label for="start">Start Date:</label>
-<input id="date" class="dd" type="date" value="">
-<br>
-<br>
-<label for="start">End Date:</label>
-<input id="date" class="df" type="date" value="">
-<script src="js/jquery.js"></script>
-<script>
+        <title>Dashboard TWD</title>
 
-    jQuery(document).ready(function($) {
+    </head>
 
-        $('.dd').change(function(){
-            dd = $('.dd').val();
-            df = $('.df').val();
-
-            getAjax(dd,df);
-        })
-
-        $('.df').change(function(){
-            dd = $('.dd').val();
-            df = $('.df').val();
-
-            getAjax(dd,df);
-        })
+    <body>
+        <div id="affiche">
+        </div>
+        <label for="start">Start Date:</label>
+        <input id="date" class="dd" type="date" value="">
+        <br>
+        <br>
+        <label for="start">End Date:</label>
+        <input id="date" class="df" type="date" value="">
 
 
+        <script src="assets/js/jquery.js"></script>
 
-    })
+        <script>
 
-    function getAjax(dd,df){
-        $.ajax({
-            type: 'post',
-            url: "ajax.php",
-            data: {
-                'dd': dd,
-                'df': df
-            },
-            dataType: 'json',
-            success: function(data) {
-                alert('succes');
-            },
-            error: function(){
-                alert('error');
+            jQuery(document).ready(function($) {
+
+                $('.dd').change(function(){
+                    dd = $('.dd').val();
+                    df = $('.df').val();
+
+                    getAjax(dd,df);
+                })
+
+                $('.df').change(function(){
+                    dd = $('.dd').val();
+                    df = $('.df').val();
+
+                    getAjax(dd,df);
+                })
+
+
+
+            })
+
+            function getAjax(dd,df){
+                $.ajax({
+                    type: 'post',
+                    url: "ajax.php",
+                    data: {
+                        'dd': dd,
+                        'df': df
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        alert('succes');
+                    }
+                });
             }
-        });
-    }
 
-</script>
+        </script>
+    </body>
+</html>
